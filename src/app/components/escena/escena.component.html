@@ -7,6 +7,22 @@
             <h3>{{ frase.title }}</h3>
             <p>{{ frase.description }}</p>
         </div>
+        <div class="controladores">
+            <div class="indicators">
+                <span *ngFor="let frase of instrucciones; let i = index" 
+                      [ngClass]="{'indicator': true, 'active': i === currentStep}"> <!--se pone la clase indicator a todas las bolas y la active a la que coincida con el currentStep-->
+                </span>
+              </div>
+            <div class="controles">
+                @if (currentStep > 0 ) {
+                    <button type="button" (click)="anteriorCarta()">&larr;</button>
+                }
+                @if (currentStep < instrucciones.length-1) {
+                    <button type="button" (click)="siguienteCarta()">&rarr;</button>
+                }            
+            </div>
+        </div>
+        
     </div>
     <br>
 </div>

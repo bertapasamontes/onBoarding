@@ -14,7 +14,63 @@
             width: 85%;
         }
     }
-    & .content-card{
+    & .content-card,.controladores{
         padding: 0% 4% 10% 4%;
     }
+
+    & .controles{
+        padding-bottom: 15%;
+
+        & button{
+            width: 36px;
+            height: 35px;
+            border-radius: 100%;
+            padding: 9px 10px;
+            border: 0px;
+            color: whitesmoke;
+            background-color: #212121;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: 
+                background-color 1s,
+                ease-in;
+        }
+        & button:hover{
+            background-color: lightslategrey;
+            color: black;
+        }
+    }
+
+    
 }
+
+.controladores{
+    columns: 2;
+}
+
+.indicators {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.indicator {
+    width: 10px; 
+    height: 10px;
+    border-radius: 50%; 
+    background-color: #ccc; 
+    transition: background-color 0.3s; 
+}
+
+.indicator.active {
+    background-color: rgb(43, 43, 45);
+    border-radius: 25px;
+    width: 25px; 
+}
+
+// @keyframes toRight {
+//     0%{
+
+//     }
+// }
