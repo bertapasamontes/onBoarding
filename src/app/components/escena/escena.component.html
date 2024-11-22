@@ -1,5 +1,12 @@
 <div *ngFor="let frase of instrucciones">
-    <h3>{{ frase.title }}</h3>
-    <p>{{ frase.description }}</p>
-    <br />
-  </div>
+    <div class="card">
+        <div class="imagen-card" [style.background-color]="frase.bgcolor">
+            <img [src]="frase.img" alt="imagen">
+        </div>
+        <div class="content-card">
+            <h3>{{ frase.title }}</h3>
+            <p>{{ frase.description }}</p>
+        </div>
+    </div>
+    <br>
+</div>
