@@ -1,5 +1,5 @@
-<div *ngFor="let frase of instrucciones">
-    <div class="card">
+<div *ngFor="let frase of instrucciones; let i = index" class="carrousel-cards">
+    <div class="card"  [ngClass]="{'visible': i === currentStep, 'hidden': i !== currentStep}">
         <div class="imagen-card" [style.background-color]="frase.bgcolor">
             <img [src]="frase.img" alt="imagen">
         </div>

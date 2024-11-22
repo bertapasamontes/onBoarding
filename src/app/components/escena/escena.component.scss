@@ -1,9 +1,13 @@
+.carrousel-cards{
+    position: absolute;
+}
 .card{
     width: 350px;
+    height: 700px;
     border-radius: 20px;
-    // padding: 5% 2% 5% 2%;
     box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
     background-color: white;
+    position: relative;
     & .imagen-card{
         padding: 30% 2% 30% 2%;   
         border-radius: 20px 20px 0px 0px;
@@ -14,10 +18,19 @@
             width: 85%;
         }
     }
-    & .content-card,.controladores{
+    & .content-card{
         padding: 0% 4% 10% 4%;
+    } 
+    & .controladores{
+        columns: 2;
+        bottom: 0px;
+        padding: 0% 10% 10% 10%;
+    
+        // position: fixed;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
     }
-
     & .controles{
         padding-bottom: 15%;
 
@@ -40,34 +53,38 @@
             color: black;
         }
     }
-
+    & .indicators {
+        display: flex;
+        justify-content: left;
+        gap: 10px;
+        margin-top: 20px;
+    }
     
+    & .indicator {
+        width: 10px; 
+        height: 10px;
+        border-radius: 50%; 
+        background-color: #ccc; 
+        transition: background-color 0.3s; 
+    }
+    
+    & .indicator.active {
+        background-color: rgb(43, 43, 45);
+        border-radius: 25px;
+        width: 25px; 
+    }
+}
+.hidden{
+    // visibility: hidden;
+    left: -100rem;
+    z-index: -10;
+}
+.visible{
+    visibility: visible;
+    z-index: 1;
 }
 
-.controladores{
-    columns: 2;
-}
 
-.indicators {
-    display: flex;
-    justify-content: left;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.indicator {
-    width: 10px; 
-    height: 10px;
-    border-radius: 50%; 
-    background-color: #ccc; 
-    transition: background-color 0.3s; 
-}
-
-.indicator.active {
-    background-color: rgb(43, 43, 45);
-    border-radius: 25px;
-    width: 25px; 
-}
 
 // @keyframes toRight {
 //     0%{
