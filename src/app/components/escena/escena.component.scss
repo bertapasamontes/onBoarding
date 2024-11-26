@@ -29,7 +29,7 @@
         // position: fixed;
         display: flex;
         justify-content:space-between;
-        align-items: center;
+        align-content: center;
     }
     & .controles{
         padding-bottom: 15%;
@@ -75,8 +75,8 @@
     }
 }
 .hidden{
-    // visibility: hidden;
-    left: -100rem;
+    visibility: hidden;
+    // left: -100rem;
     z-index: -10;
 }
 .visible{

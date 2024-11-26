@@ -15,8 +15,9 @@
               </div>
             <div class="controles">
                 @if (currentStep > 0 ) {
-                    <button type="button" (click)="anteriorCarta()">&larr;</button>
+                    <button type="button" (click)="anteriorCarta()" class="visible">&larr;</button>
                 }
+                @else {<button type="button" (click)="anteriorCarta()" class="hidden">&larr;</button>}
                 @if (currentStep < instrucciones.length-1) {
                     <button type="button" (click)="siguienteCarta()">&rarr;</button>
                 }            
