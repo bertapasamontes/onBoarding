@@ -1,5 +1,9 @@
 <div *ngFor="let frase of instrucciones; let i = index" class="carrousel-cards">
-    <div class="card"  [ngClass]="{'visible': i === currentStep, 'hidden': i !== currentStep}">
+    <div class="card" *ngIf="i === currentStep" [@animacionSlider]="i">
+      
+
+<!-- <div *ngFor="let frase of instrucciones; let i = index" class="carrousel-cards"  [@animacionSlider]="currentStep"> -->
+    <!-- <div class="card"  [ngClass]="{'visible': i === currentStep, 'hidden': i !== currentStep}"> -->
         <div class="imagen-card" [style.background-color]="frase.bgcolor">
             <img [src]="frase.img" alt="imagen">
         </div>
@@ -13,15 +17,15 @@
                       [ngClass]="{'indicator': true, 'active': i === currentStep}"> <!--se pone la clase indicator a todas las bolas y la active a la que coincida con el currentStep-->
                 </span>
               </div>
-            <div class="controles">
-                @if (currentStep > 0 ) {
-                    <button type="button" (click)="anteriorCarta()" class="visible">&larr;</button>
-                }
-                @else {<button type="button" (click)="anteriorCarta()" class="hidden">&larr;</button>}
-                @if (currentStep < instrucciones.length-1) {
-                    <button type="button" (click)="siguienteCarta()">&rarr;</button>
-                }            
-            </div>
+              <div class="controles">
+                <!-- Botón izquierda -->
+                <button type="button" (click)="anteriorCarta()" 
+                        [ngClass]="{'boton-visible': currentStep > 0, 'boton-hidden': currentStep === 0}">&larr;</button>
+              
+                <!-- Botón derecha -->
+                <button type="button" (click)="siguienteCarta()" 
+                        [ngClass]="{'boton-visible': currentStep < instrucciones.length - 1, 'boton-hidden': currentStep === instrucciones.length - 1}">&rarr;</button>
+              </div>
         </div>
         
     </div>
