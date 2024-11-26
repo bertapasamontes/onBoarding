@@ -1,37 +1,77 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef } from '@angular/core';
 import { NgFor, CommonModule } from '@angular/common';
 import { IStep } from '../../interfaces/i-step';
 
 @Component({
   selector: 'app-escena',
-  imports: [NgFor, CommonModule],
   templateUrl: './escena.component.html',
-  styleUrl: './escena.component.scss'
+  imports: [NgFor, CommonModule],
+  styleUrls: ['./escena.component.scss'],
 })
-export class EscenaComponent {
-// [x: string]: any;
-
+export class EscenaComponent implements AfterViewInit {
   @Input() instrucciones: IStep[] = [];
 
-  ngOnInit(): void {
-    console.log('Instrucciones:', this.instrucciones);
+  currentStep = 0; // Índice inicial de la carta activa (= la 1ª)
+  private cards: HTMLElement[] = []; // Referencia a las cartas en el DOM
+
+  constructor(private el: ElementRef) {}
+
+  ngAfterViewInit(): void {
+    // Obtener las cartas del DOM
+    this.cards = Array.from(this.el.nativeElement.querySelectorAll('.carrousel-cards .card'));
+
+    if (this.cards.length === 0) {
+      console.error('No se encontraron elementos con la clase .card');
+      return;
+    }
+
+    // Cargar la vista inicial
+    this.loadShow();
   }
 
-  currentStep = 0;
-  bolitaActiva = true;
+  // Cargar la animación del carrusel
+  loadShow(): void {
+    let stt = 0;
 
-  siguienteCarta(): void{
-    if(this.currentStep < this.instrucciones.length-1){
+    // Configurar la carta activa
+    this.cards[this.currentStep].style.transform = `none`;
+    this.cards[this.currentStep].style.zIndex = '1';
+    this.cards[this.currentStep].style.filter = 'none';
+    this.cards[this.currentStep].style.opacity = '1';
+
+    // Configurar las cartas a la derecha de la activa
+    for (let i = this.currentStep + 1; i < this.cards.length; i++) {
+      stt++;
+      this.cards[i].style.transform = `translateX(${120 * stt}px) scale(${1 - 0.2 * stt}) perspective(16px) rotateY(-1deg)`;
+      this.cards[i].style.zIndex = `${-stt}`;
+      this.cards[i].style.filter = 'blur(5px)';
+      this.cards[i].style.opacity = stt > 2 ? '0' : '0.6';
+    }
+
+    // Configurar las cartas a la izquierda de la activa
+    stt = 0;
+    for (let i = this.currentStep - 1; i >= 0; i--) {
+      stt++;
+      this.cards[i].style.transform = `translateX(${-120 * stt}px) scale(${1 - 0.2 * stt}) perspective(16px) rotateY(1deg)`;
+      this.cards[i].style.zIndex = `${-stt}`;
+      this.cards[i].style.filter = 'blur(5px)';
+      this.cards[i].style.opacity = stt > 2 ? '0' : '0.6';
+    }
+  }
+
+  // siguiente carta
+  siguienteCarta(): void {
+    if (this.currentStep < this.cards.length - 1) {
       this.currentStep++;
-      console.log("currentStep: ", this.currentStep);
+      this.loadShow();
     }
   }
 
-  anteriorCarta(): void{
-    if(this.currentStep > 0){
+  // carta anterior
+  anteriorCarta(): void {
+    if (this.currentStep > 0) {
       this.currentStep--;
-      console.log("currentStep: ", this.currentStep);
+      this.loadShow();
     }
   }
-
 }

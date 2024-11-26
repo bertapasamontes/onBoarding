@@ -1,5 +1,5 @@
 <div *ngFor="let frase of instrucciones; let i = index" class="carrousel-cards">
-    <div class="card"  [ngClass]="{'visible': i === currentStep, 'hidden': i !== currentStep}">
+    <div class="card" [attr.data-index]="i">
         <div class="imagen-card" [style.background-color]="frase.bgcolor">
             <img [src]="frase.img" alt="imagen">
         </div>
@@ -7,22 +7,21 @@
             <h3>{{ frase.title }}</h3>
             <p>{{ frase.description }}</p>
         </div>
+        <!-- Controles de navegación -->
         <div class="controladores">
             <div class="indicators">
                 <span *ngFor="let frase of instrucciones; let i = index" 
-                      [ngClass]="{'indicator': true, 'active': i === currentStep}"> <!--se pone la clase indicator a todas las bolas y la active a la que coincida con el currentStep-->
+                      [ngClass]="{'indicator': true, 'active': i === currentStep}"> 
+                      <!-- se pone la clase indicator a todas las bolas y la active a la que coincida con el currentStep -->
                 </span>
               </div>
             <div class="controles">
-                @if (currentStep > 0 ) {
-                    <button type="button" (click)="anteriorCarta()">&larr;</button>
-                }
-                @if (currentStep < instrucciones.length-1) {
-                    <button type="button" (click)="siguienteCarta()">&rarr;</button>
-                }            
+                <button type="button" (click)="anteriorCarta()"  class="btn"  id="anterior" [disabled]="currentStep === 0">&larr;</button>
+                <button type="button" (click)="siguienteCarta()" class="btn"  id="siguiente" 
+                [disabled]="currentStep === instrucciones.length - 1">&rarr;</button>
+
             </div>
+            
         </div>
-        
     </div>
-    <br>
 </div>
