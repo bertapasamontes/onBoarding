@@ -11,13 +11,13 @@ import { IStep } from '../../interfaces/i-step';
 export class EscenaComponent implements AfterViewInit {
   @Input() instrucciones: IStep[] = [];
 
-  currentStep = 0; // Índice inicial de la carta activa (= la 1ª)
-  private cards: HTMLElement[] = []; // Referencia a las cartas en el DOM
+  currentStep = 0; // indice inicial de la carta activa (= la 1ª)
+  private cards: HTMLElement[] = []; //cartas en el DOM
 
   constructor(private el: ElementRef) {}
 
   ngAfterViewInit(): void {
-    // Obtener las cartas del DOM
+    // cogiendo las cartas del DOM
     this.cards = Array.from(this.el.nativeElement.querySelectorAll('.carrousel-cards .card'));
 
     if (this.cards.length === 0) {
@@ -25,21 +25,21 @@ export class EscenaComponent implements AfterViewInit {
       return;
     }
 
-    // Cargar la vista inicial
+    // cargando vista inicial
     this.loadShow();
   }
 
-  // Cargar la animación del carrusel
+  // canrgando animación del carrusel
   loadShow(): void {
     let stt = 0;
 
-    // Configurar la carta activa
+    // config de carta activa
     this.cards[this.currentStep].style.transform = `none`;
     this.cards[this.currentStep].style.zIndex = '1';
     this.cards[this.currentStep].style.filter = 'none';
     this.cards[this.currentStep].style.opacity = '1';
 
-    // Configurar las cartas a la derecha de la activa
+    // config de cartas a la derecha de la activa
     for (let i = this.currentStep + 1; i < this.cards.length; i++) {
       stt++;
       this.cards[i].style.transform = `translateX(${120 * stt}px) scale(${1 - 0.2 * stt}) perspective(16px) rotateY(-1deg)`;
@@ -48,7 +48,7 @@ export class EscenaComponent implements AfterViewInit {
       this.cards[i].style.opacity = stt > 2 ? '0' : '0.6';
     }
 
-    // Configurar las cartas a la izquierda de la activa
+    // config de cartas a la izquierda de la activa
     stt = 0;
     for (let i = this.currentStep - 1; i >= 0; i--) {
       stt++;
