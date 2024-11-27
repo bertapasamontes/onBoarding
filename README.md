@@ -21,7 +21,7 @@ Aquest projecte és una aplicació Angular generada amb l'Angular CLI. Es tracta
 ## 🛠️ Instal·lació
 1. Clona el repositori:
    ```bash
-   git clone [<url_del_repositori>](https://github.com/bertapasamontes/onBoarding)
+   git clone https://github.com/bertapasamontes/onBoarding
    ```
 2. Instal·la les dependències:
    ```bash
