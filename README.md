@@ -1,59 +1,41 @@
 # OnBoarding
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.0.
+## 📄 Descripció
+Aquest projecte és una aplicació Angular generada amb l'Angular CLI. Es tracta d’un exemple pràctic d'una configuració inicial per a aplicacions web, incloent servidors locals i scaffolding de components.
 
-## Development server
+## ✨ Característiques
+- **Servidor de Desenvolupament**: Permet executar l'aplicació localment amb `ng serve`.
+- **Code Scaffolding**: Generació de components, directives i pipes amb l'Angular CLI.
+- **Construcció**: Generació d'artefactes de producció optimitzats.
 
-To start a local development server, run:
+## 💻 Tecnologies Utilitzades
+- Angular 19
+- TypeScript
+- SCSS
+- HTML5
 
-```bash
-ng serve
-```
+## 📋 Requisits
+- Node.js i npm instal·lats.
+- Angular CLI instal·lat globalment.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 🛠️ Instal·lació
+1. Clona el repositori:
+   ```bash
+   git clone https://github.com/bertapasamontes/onBoarding
+   ```
+2. Instal·la les dependències:
+   ```bash
+   npm install
+   ```
 
-## Code scaffolding
+## ▶️ Execució
+- Executa l'aplicació localment:
+   ```bash
+   ng serve -o
+   ```
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🌐 Desplegament
+Aquest projecte es pot desplegar en serveis de hosting o servidors web.
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🤝 Contribucions
+Les contribucions són benvingudes! Comparteix els teus suggeriments i millores.
