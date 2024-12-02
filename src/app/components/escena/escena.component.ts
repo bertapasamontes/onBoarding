@@ -29,7 +29,7 @@ export class EscenaComponent implements AfterViewInit {
     this.loadShow();
   }
 
-  // canrgando animación del carrusel
+  // cargando animación del carrusel
   loadShow(): void {
     let stt = 0;
 

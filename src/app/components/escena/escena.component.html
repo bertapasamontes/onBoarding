@@ -10,8 +10,8 @@
         <!-- controles de navegación -->
         <div class="controladores">
             <div class="indicators">
-                <span *ngFor="let frase of instrucciones; let i = index" 
-                      [ngClass]="{'indicator': true, 'active': i === currentStep}"> 
+                <span *ngFor="let frase of instrucciones; let i = index" >
+                    <button type="button" [ngClass]="{'indicator': true, 'active': i === currentStep}" class="button" (click)="i === currentStep-1? anteriorCarta():siguienteCarta()"></button> 
                       <!-- se pone la clase indicator a todas las bolas y la active a la que coincida con el currentStep -->
                 </span>
               </div>
